@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Peta Lokasi Riau (Auto Zoom + Cluster)</title>
+
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<!-- Marker Cluster CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+    }
+    #map {
+        height: 600px;
+        width: 100%;
+        margin-top: 20px;
+        border: 2px solid #333;
+        border-radius: 10px;
+    }
+    button {
+        margin-top:10px;
+        padding:8px 16px;
+        border-radius:6px;
+        border: none;
+        background-color: #333;
+        color: white;
+        cursor: pointer;
+    }
+</style>
+
+</head>
+<body>
+
+<h2>Peta Lokasi di Provinsi Riau</h2>
+<p>Berikut peta yang menampilkan beberapa kabupaten/kota di Riau.</p>
+
+<div id="map"></div>
+<button onclick="map.fitBounds(markers.getBounds())">Tampilkan Semua Marker</button>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<!-- Marker Cluster JS -->
+<script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+
+<script>
+// Inisialisasi peta
+var map = L.map('map').setView([1.1060, 104.0305], 6);
+
+// Tile layer (peta dasar)
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
+
+// Data lokasi (yang kamu kasih)
+var locations = [
+    { lat: 0.4436135393832172, lng: 102.08884008141841, title: "Pelalawan" },
+    { lat: -0.12276415218889841, lng: 102.98610488686401, title: "Indragiri Hilir" },
+    { lat: 0.7870414652254136,  lng: 101.76718870035964, title: "Siak" },
+    { lat: 1.7618874735067558,  lng: 100.7477575373139, title: "Rokan Hilir" },
+    { lat: 1.316718148757208,  lng: 101.58018099498416, title: "Bengkalis" },
+    { lat: 1.6708667595325895,  lng: 101.3979888931353, title: "Dumai" }
+];
+
+// Marker custom
+var customIcon = L.icon({
+    iconUrl: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
+    iconSize: [30, 30],
+    iconAnchor: [15, 30],
+    popupAnchor: [0, -30]
+});
+
+// Pakai marker cluster group
+var markers = L.markerClusterGroup();
+
+locations.forEach(function(location) {
+    var marker = L.marker([location.lat, location.lng], { icon: customIcon })
+        .bindPopup("<b>" + location.title + "</b>");
+    markers.addLayer(marker);
+});
+
+map.addLayer(markers);
+
+// Auto zoom biar semua marker langsung keliatan
+map.fitBounds(markers.getBounds());
+</script>
+
+</body>
+</html>

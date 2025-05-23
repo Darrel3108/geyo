@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mitigasi Bencana Kebakaran</title>
+    <link rel="shortcut icon" href="./assets/icon.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="./assets/logo SiagaApi.jpg">
+    <!-- Link ke CSS Leaflet dan Marker Cluster -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        section {
+            padding: 20px;
+        }
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-title-about {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        #map {
+            height: 600px;
+            width: 100%;
+            border: 2px solid #333;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: none;
+            background-color: #333;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="main-container">
+            <div class="nav">
+                <div class="logo">
+                    <a href="#" style="color: yellow;">SiagaApi</a>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about-1">About</a></li>
+                        <li><a href="#about-2">Siklus Penanggulangan</a></li>
+                        <li><a href="#contact">Feedback</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Home Section -->
+            <section id="home">
+                <div class="home-left">
+                    <h3 class="pre-title">Halo semuanya, mari kita kenali bersama</h3>
+                    <h1 class="home-name">Bencana Kebakaran di Indonesia</h1>
+                    <p style="text-align: justify;">
+                        Saya Muhammad Darrel Al Ghiffari, siswa kelas 11 di MAN Insan Cendekia Batam. Saya memiliki minat besar dalam ilmu kebumian dan seni, terutama dalam memainkan hadroh. Website ini dibuat sebagai media untuk memperkenalkan diri, berbagi pengalaman, dan menampilkan berbagai keterampilan serta pencapaian yang telah saya raih.
+                    </p>
+                </div>
+                <div class="home-right">
+                    <img src="assets/trio eek.jpg" alt="Profile Picture">
+                </div>
+            </section>
+        </div>
+
+        <!-- Progress Bar -->
+        <div id="progress-bar"></div>
+        <script>
+            window.onscroll = function () {
+                let scrollTop = document.documentElement.scrollTop;
+                let scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                let scrolled = (scrollTop / scrollHeight) * 100;
+                document.getElementById("progress-bar").style.width = scrolled + "%";
+            };
+        </script>
+    </header>
+
+    <!-- About Section -->
+    <section id="about-1">
+        <div class="main-container">
+            <h2 class="section-title-about">Mau tau apa aja nich?</h2>
+            <div class="grid-3">
+                <div class="about">
+                    <div class="about-icon">
+                        <a href="https://drive.google.com/file/d/1zgtz6S0pPT0G2LfNkof8RaFUO9Ii-hXg/view?usp=sharing" target="_blank"><img src="assets/pengertian.jpg" alt="Pengertian"></a>
+                    </div>
+                    <h4>Pengertian</h4>
+                </div>
+                <div class="about">
+                    <div class="about-icon">
+                         <a href="https://drive.google.com/file/d/16jbG_DkuIyNBX4XjmAHIu0blVmvR5di2/view?usp=sharing" target="_blank"><img src="assets/penyebab.jpg" alt="Penyebab"></a>
+                    </div>
+                    <h4>Faktor Pendukung dan Penghambat</h4>
+                </div>
+                <div class="about">
+                    <div class="about-icon">
+                         <a href="https://drive.google.com/file/d/1n_ktdjUyNORtWN3eaeJAUshH0KheUrGg/view?usp=sharing" target="_blank"><img src="assets/kasus nyata.jpg" alt="Kasus Nyata"></a>
+                    </div>
+                    <h4>Contoh Kasus</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Siklus Penanggulangan Section -->
+    <section id="about-2">
+        <div class="main-container">
+            <h2 class="section-title-about">Siklus Managemen Penanggulangan Bencana</h2>
+            <p style="text-align: center;">
+                Siklus penanggulangan bencana merupakan rangkaian tahapan yang dilakukan secara berkelanjutan untuk mengurangi risiko, menangani dampak, dan memulihkan kondisi setelah bencana terjadi. Siklus ini terdiri dari tiga fase utama yaitu:
+            </p>
+            <br>
+            <div class="grid-3">
+                <div class="about">
+                    <div class="about-icon">
+                         <a href="https://drive.google.com/file/d/1_5MKoWI4lQUiTO_JfZC9t06ELpB8dFsY/view?usp=sharing" target="_blank"><img src="assets/sebelum.jpg" alt="OSN Kebumian"></a>
+                    </div>
+                    <h4>Sebelum terjadi bencana</h4>
+    
+                </div>
+                <div class="about">
+                    <div class="about-icon">
+                         <a href="https://drive.google.com/file/d/1uqHjaVwz17EyyS1FG9e91bmXxvCgQAH3/view?usp=sharing" target="_blank"><img src="assets/saat.jpg" alt="OSN Kebumian"></a>
+                    </div>
+                    <h4>Saat terjadi bencana</h4>
+                    
+                </div>
+                <div class="about">
+                    <div class="about-icon">
+                         <a href="https://drive.google.com/file/d/18vQgppomorxRwOelrE-ZFpm6u4C20wwL/view?usp=sharing" target="_blank"><img src="assets/sesudah.jpg" alt="OSN Kebumian"></a>
+                    </div>
+                    <h4>Pasca terjadi bencana</h4>
+                
+                </div>
+            </div>
+
+            <!-- Quote Box -->
+            <div id="quote-box">
+                <p id="quote">"Siap nggak siap, bencana tetap bisa datang. Tapi kalau kita siap mitigasi, lebih gampang cari jalan keluarnya!"</p>
+                <button onclick="generateQuote()">Ganti Quote</button>
+            </div>
+
+            <script>
+                const quotes = [
+                    "Bencana kebakaran nggak kenal waktu, tapi kalau kita siap, kita bisa lebih tenang! Ready, set, mitigate!",
+                    "Jangan tunggu kebakaran datang baru panik. Lebih baik kita siap, biar kalau terjadi, kita bisa bilang ‘ah, gampang!’",
+                    "Mencegah kebakaran itu seperti nge-save data: lebih ribet, tapi jauh lebih aman di masa depan.",
+                    "Kita nggak bisa mencegah api, tapi kita bisa bikin langkah-langkah untuk ngontrolnya. Keep calm and mitigate!",
+                    "Kebakaran nggak tanya, ‘Kamu siap?’ Tapi kita bisa jawab, ‘Iya!’ dengan semua persiapan yang matang.",
+                    "Siap siaga itu keren, guys! Yuk, jadi pahlawan dengan penanggulangan kebakaran yang kece!",
+                    "Nggak ada yang pengen kebakaran, tapi dengan mitigasi, kita bisa lebih pede menghadapi apapun!",
+                ];
+
+                function generateQuote() {
+                    let randomIndex = Math.floor(Math.random() * quotes.length);
+                    document.getElementById("quote").innerText = quotes[randomIndex];
+                }
+            </script>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <body>
+        <section id="contact">
+            <div class="main-container">
+                <h2 class="section-title-about">Peta Lokasi Daerah Yang Rawan Kebakaran</h2>
+                <div id="map"></div>
+                <button onclick="map.fitBounds(markers.getBounds())">Tampilkan Semua Marker</button>
+            </div>
+        </section>
+    
+        <!-- Leaflet JS -->
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <!-- Marker Cluster JS -->
+        <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+    
+        <script>
+            // Inisialisasi peta
+            var map = L.map('map').setView([1.1060, 104.0305], 6);
+    
+            // Tile layer (peta dasar)
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(map);
+    
+            // Data lokasi
+            var locations = [
+                // Provinsi Riau
+                { lat: 0.4436, lng: 102.0888, title: "Pelalawan" },
+                { lat: -0.1228, lng: 102.9861, title: "Indragiri Hilir" },
+                { lat: 0.7870, lng: 101.7672, title: "Siak" },
+                { lat: 1.7619, lng: 100.7478, title: "Rokan Hilir" },
+                { lat: 1.3167, lng: 101.5802, title: "Bengkalis" },
+                { lat: 1.6709, lng: 101.3980, title: "Dumai" },
+    
+                // Provinsi Jambi
+                { lat: -1.4151, lng: 104.7070, title: "Tanjung Jabung Timur (Kecamatan Sadu, Nipah Panjang)" },
+                { lat: -1.6181, lng: 103.6870, title: "Muaro Jambi (Kecamatan Kumpeh, Sungai Gelam)" },
+                { lat: -1.0633, lng: 104.5150, title: "Tanjung Jabung Barat (Kecamatan Bram Itam, Betara)" },
+    
+                // Provinsi Sumatera Selatan
+                { lat: -3.1296, lng: 104.5537, title: "Ogan Komering Ilir (OKI) (Kecamatan Pedamaran Timur, Tulung Selapan)" },
+                { lat: -3.4044, lng: 104.7037, title: "Musi Banyuasin (Kecamatan Lalan, Bayung Lencir)" },
+                { lat: -3.1296, lng: 104.6483, title: "Banyuasin (Kecamatan Muara Sugihan, Rambutan)" },
+    
+                // Provinsi Kalimantan Tengah
+                { lat: -2.6795, lng: 113.1666, title: "Pulang Pisau (Kecamatan Jabiren Raya, Kahayan Hilir)" },
+                { lat: -0.1833, lng: 113.1450, title: "Kapuas (Kecamatan Dadahup, Tamban Catur)" },
+                { lat: -2.2274, lng: 113.9213, title: "Kota Palangka Raya (Kecamatan Sabangau)" },
+    
+                // Provinsi Kalimantan Barat
+                { lat: -0.5326, lng: 109.9677, title: "Ketapang (Kecamatan Manis Mata, Tumbang Titi)" },
+                { lat: -0.3176, lng: 112.9574, title: "Sintang (Kecamatan Dedai, Tempunak)" },
+                { lat: 0.0663, lng: 110.3097, title: "Sambas dan Sanggau" },
+    
+                // Provinsi Kalimantan Timur
+                { lat: -0.5811, lng: 117.3667, title: "Kutai Kartanegara (Kecamatan Samboja, Muara Jawa)" },
+                { lat: -2.6352, lng: 116.2357, title: "Paser (Kecamatan Tanah Grogot)" },
+                { lat: -1.2662, lng: 116.9023, title: "Balikpapan" },
+    
+                // Provinsi Jawa Timur
+                { lat: -7.5704, lng: 111.3993, title: "Gunung Lawu (perbatasan Magetan dan Karanganyar)" },
+                { lat: -7.9683, lng: 112.9214, title: "Gunung Bromo-Tengger-Semeru (Kab. Probolinggo, Pasuruan, Lumajang)" },
+                { lat: -8.0622, lng: 113.4475, title: "Gunung Argopuro (Kab. Situbondo)" },
+    
+                // Provinsi Jawa Barat
+                { lat: -6.7792, lng: 106.9243, title: "Gunung Salak – Halimun (Kab. Sukabumi, Bogor)" },
+                { lat: -6.7483, lng: 106.8628, title: "Gunung Gede Pangrango (Kab. Cianjur, Bogor)" },
+    
+                // Provinsi Bali
+                { lat: -8.1633, lng: 114.6447, title: "Taman Nasional Bali Barat (Kabupaten Jembrana)" },
+    
+                // Provinsi Nusa Tenggara Timur
+                { lat: -9.3661, lng: 119.2189, title: "Sumba Timur (Kecamatan Pandawai, Pahunga Lodu)" },
+                { lat: -10.1528, lng: 123.5567, title: "Kupang (Kecamatan Fatuleu, Amarasi)" },
+                { lat: -8.2760, lng: 123.3093, title: "Lembata" },
+    
+                // Provinsi Papua
+                { lat: -8.4975, lng: 140.3987, title: "Merauke (Kecamatan Semangga)" },
+                { lat: -3.5540, lng: 140.7180, title: "Keerom dan Jayapura" }
+            ];
+    
+            // Marker custom
+            var customIcon = L.icon({
+                iconUrl: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
+                iconSize: [30, 30],
+                iconAnchor: [15, 30],
+                popupAnchor: [0, -30]
+            });
+    
+            // Pakai marker cluster group
+            var markers = L.markerClusterGroup();
+    
+            locations.forEach(function(location) {
+                var marker = L.marker([location.lat, location.lng], { icon: customIcon })
+                    .bindPopup("<b>" + location.title + "</b>");
+                markers.addLayer(marker);
+            });
+    
+            // Menambahkan marker ke peta
+            map.addLayer(markers);
+    
+            // Auto zoom untuk menampilkan semua marker
+            map.fitBounds(markers.getBounds());
+        </script>
+    </body>
+    
+
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-icons">
+                <a href="https://www.instagram.com/_ddrrel31_/" target="_blank">
+                    <img src="./assets/OIP (5).jpeg" alt="Instagram">
+                </a>
+                <a href="https://x.com/Moonhero_" target="_blank">
+                    <img src="./assets/logo X.jpeg" alt="X">
+                </a>
+                <a href="https://github.com/Darrel3108" target="_blank">
+                    <img src="./assets/logo github.png" alt="GitHub">
+                </a>
+            </div>
+            <p>&#169; 2025 SiagaApi. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
