@@ -95,7 +95,7 @@ img:hover {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background: linear-gradient(90deg, #1565C0, #1565C0 100%);
+    background: linear-gradient(90deg, #C62828, #C62828 100%);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     position: fixed;
     width: 100%;
@@ -193,7 +193,7 @@ section {
 
 /* ABOUT SECTION */
 #about-1 {
-    background-color: #FFCDD2;
+    background-color: #FFAB91;
 }
 .section-title-about {
     text-align: center;
@@ -322,7 +322,7 @@ textarea {
 /* FOOTER */
 footer {
     padding: 3rem 0;
-    background: #1565C0;
+    background: #C62828;
     color: white;
     text-align: center;
 }
